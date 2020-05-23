@@ -13,5 +13,10 @@ namespace AlgoAndStruct.BinaryTree.Tests.Fabric
         {
             return new RemoveHandler<int, object>();
         }
+
+        public static SearchHandler<int, object> CreateSearchHandler()
+        {
+            return new SearchHandler<int, object>();
+        }
     }
 }
