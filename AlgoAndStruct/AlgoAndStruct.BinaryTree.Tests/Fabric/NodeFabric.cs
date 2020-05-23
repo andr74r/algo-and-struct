@@ -2,9 +2,9 @@
 {
     public static class NodeFabric
     {
-        public static Node<int, object> CreateNode(int key)
+        public static BinaryTreeNode<int, object> CreateNode(int key)
         {
-            return new Node<int, object>(key, new object());
+            return new BinaryTreeNode<int, object>(key, new object());
         }
     }
 }

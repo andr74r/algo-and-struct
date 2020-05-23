@@ -3,25 +3,25 @@ using System;
 
 namespace AlgoAndStruct.BinaryTree.Handlers
 {
-    public class InsertHandler<TKey, TValue>
+    public class BinaryTreeInsertHandler<TKey, TValue>
         where TKey : IComparable
     {
-        public virtual Node<TKey, TValue> Handle(Node<TKey, TValue> root, TKey key, TValue value)
+        public virtual BinaryTreeNode<TKey, TValue> Handle(BinaryTreeNode<TKey, TValue> root, TKey key, TValue value)
         {
             if (root == null)
             {
-                root = new Node<TKey, TValue>(key, value);
+                root = new BinaryTreeNode<TKey, TValue>(key, value);
             }
             else
             {
-                var newNode = new Node<TKey, TValue>(key, value);
+                var newNode = new BinaryTreeNode<TKey, TValue>(key, value);
                 InsertRecursively(root, newNode);
             }
 
             return root;
         }
 
-        private void InsertRecursively(Node<TKey, TValue> currentNode, Node<TKey, TValue> newNode)
+        private void InsertRecursively(BinaryTreeNode<TKey, TValue> currentNode, BinaryTreeNode<TKey, TValue> newNode)
         {
             if (newNode.Key.GreaterThan(currentNode.Key))
             {

@@ -6,17 +6,17 @@ namespace AlgoAndStruct.BinaryTree
     public class BinaryTree<TKey, TValue>
         where TKey : IComparable
     {
-        private readonly InsertHandler<TKey, TValue> _insertHandler;
-        private readonly RemoveHandler<TKey, TValue> _removeHandler;
-        private readonly SearchHandler<TKey, TValue> _searchHandler;
+        private readonly BinaryTreeInsertHandler<TKey, TValue> _insertHandler;
+        private readonly BinaryTreeRemoveHandler<TKey, TValue> _removeHandler;
+        private readonly BinaryTreeSearchHandler<TKey, TValue> _searchHandler;
 
-        private Node<TKey, TValue> _root;
+        private BinaryTreeNode<TKey, TValue> _root;
 
         public BinaryTree()
         {
-            _insertHandler = new InsertHandler<TKey, TValue>();
-            _removeHandler = new RemoveHandler<TKey, TValue>();
-            _searchHandler = new SearchHandler<TKey, TValue>();
+            _insertHandler = new BinaryTreeInsertHandler<TKey, TValue>();
+            _removeHandler = new BinaryTreeRemoveHandler<TKey, TValue>();
+            _searchHandler = new BinaryTreeSearchHandler<TKey, TValue>();
         }
 
         public void Insert(TKey key, TValue value)

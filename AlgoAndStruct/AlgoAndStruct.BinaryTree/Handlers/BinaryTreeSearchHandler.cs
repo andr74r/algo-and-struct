@@ -3,15 +3,15 @@ using System;
 
 namespace AlgoAndStruct.BinaryTree.Handlers
 {
-    public class SearchHandler<TKey, TValue>
+    public class BinaryTreeSearchHandler<TKey, TValue>
         where TKey : IComparable
     {
-        public Node<TKey, TValue> Handle(Node<TKey, TValue> root, TKey key)
+        public BinaryTreeNode<TKey, TValue> Handle(BinaryTreeNode<TKey, TValue> root, TKey key)
         {
             return SearchRecursively(root, key);
         }
 
-        private Node<TKey, TValue> SearchRecursively(Node<TKey, TValue> currentNode, TKey key)
+        private BinaryTreeNode<TKey, TValue> SearchRecursively(BinaryTreeNode<TKey, TValue> currentNode, TKey key)
         {
             if (currentNode == null)
             {

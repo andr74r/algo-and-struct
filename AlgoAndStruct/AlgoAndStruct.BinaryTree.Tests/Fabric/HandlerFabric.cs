@@ -4,19 +4,19 @@ namespace AlgoAndStruct.BinaryTree.Tests.Fabric
 {
     public static class HandlerFabric
     {
-        public static InsertHandler<int, object> CreateInsertHandler()
+        public static BinaryTreeInsertHandler<int, object> CreateInsertHandler()
         {
-            return new InsertHandler<int, object>();
+            return new BinaryTreeInsertHandler<int, object>();
         }
 
-        public static RemoveHandler<int, object> CreateRemoveHandler()
+        public static BinaryTreeRemoveHandler<int, object> CreateRemoveHandler()
         {
-            return new RemoveHandler<int, object>();
+            return new BinaryTreeRemoveHandler<int, object>();
         }
 
-        public static SearchHandler<int, object> CreateSearchHandler()
+        public static BinaryTreeSearchHandler<int, object> CreateSearchHandler()
         {
-            return new SearchHandler<int, object>();
+            return new BinaryTreeSearchHandler<int, object>();
         }
     }
 }

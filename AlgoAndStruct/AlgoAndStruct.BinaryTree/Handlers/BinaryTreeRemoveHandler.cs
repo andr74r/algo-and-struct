@@ -3,15 +3,15 @@ using System;
 
 namespace AlgoAndStruct.BinaryTree.Handlers
 {
-    public class RemoveHandler<TKey, TValue>
+    public class BinaryTreeRemoveHandler<TKey, TValue>
         where TKey : IComparable
     {
-        public virtual Node<TKey, TValue> Handle(Node<TKey, TValue> root, TKey key)
+        public virtual BinaryTreeNode<TKey, TValue> Handle(BinaryTreeNode<TKey, TValue> root, TKey key)
         {
             return DeleteRecursively(root, key);
         }
 
-        private Node<TKey, TValue> DeleteRecursively(Node<TKey, TValue> currentNode, TKey key)
+        private BinaryTreeNode<TKey, TValue> DeleteRecursively(BinaryTreeNode<TKey, TValue> currentNode, TKey key)
         {
             if (currentNode == null)
             {
@@ -52,7 +52,7 @@ namespace AlgoAndStruct.BinaryTree.Handlers
             return currentNode;
         }
 
-        private Node<TKey, TValue> FindSmallestNode(Node<TKey, TValue> currentNode)
+        private BinaryTreeNode<TKey, TValue> FindSmallestNode(BinaryTreeNode<TKey, TValue> currentNode)
         {
             if (currentNode.LeftNode == null)
             {
