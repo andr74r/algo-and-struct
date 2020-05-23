@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AlgoAndStruct.BinaryTree.Extensions;
+using System;
 
 namespace AlgoAndStruct.BinaryTree.Handlers
 {
@@ -22,7 +23,7 @@ namespace AlgoAndStruct.BinaryTree.Handlers
 
         private void InsertRecursively(Node<TKey, TValue> currentNode, Node<TKey, TValue> newNode)
         {
-            if (newNode.Key.CompareTo(currentNode.Key) == 1)
+            if (newNode.Key.GreaterThan(currentNode.Key))
             {
                 if (currentNode.RightNode == null)
                 {

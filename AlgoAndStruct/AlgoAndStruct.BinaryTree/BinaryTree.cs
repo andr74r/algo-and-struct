@@ -7,6 +7,7 @@ namespace AlgoAndStruct.BinaryTree
         where TKey : IComparable
     {
         private readonly InsertHandler<TKey, TValue> _insertHandler;
+        private readonly RemoveHandler<TKey, TValue> _removeHandler;
 
         private Node<TKey, TValue> _root;
 
@@ -18,6 +19,11 @@ namespace AlgoAndStruct.BinaryTree
         public void Insert(TKey key, TValue value)
         {
             _root = _insertHandler.Handle(_root, key, value);
+        }
+
+        public void Remove(TKey key)
+        {
+            _root = _removeHandler.Handle(_root, key);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AlgoAndStruct.BinaryTree.Handlers;
+using AlgoAndStruct.BinaryTree.Tests.Fabric;
 using NUnit.Framework;
 
 namespace AlgoAndStruct.BinaryTree.Tests.Handlers
@@ -10,7 +11,7 @@ namespace AlgoAndStruct.BinaryTree.Tests.Handlers
         public void Handle_RootIsNull_RootShouldBeInsertedNode()
         {
             // Arrange
-            var handler = GetInsertHandler();
+            var handler = HandlerFabric.CreateInsertHandler();
 
             // Act
             var actual = handler.Handle(null, 3, new object());
@@ -24,9 +25,9 @@ namespace AlgoAndStruct.BinaryTree.Tests.Handlers
         public void Handle_InsertedValueLessThenRoot_ShoudInsertIntoLeftNode()
         {
             // Arrange
-            var handler = GetInsertHandler();
+            var handler = HandlerFabric.CreateInsertHandler();
 
-            var root = CreateNode(10);
+            var root = NodeFabric.CreateNode(10);
 
             // Act
             var actual = handler.Handle(root, 3, new object());
@@ -40,9 +41,9 @@ namespace AlgoAndStruct.BinaryTree.Tests.Handlers
         public void Handle_InsertedValueMoreThenRoot_ShoudInsertIntoRightNode()
         {
             // Arrange
-            var handler = GetInsertHandler();
+            var handler = HandlerFabric.CreateInsertHandler();
 
-            var root = CreateNode(10);
+            var root = NodeFabric.CreateNode(10);
 
             // Act
             var actual = handler.Handle(root, 15, new object());
@@ -56,11 +57,11 @@ namespace AlgoAndStruct.BinaryTree.Tests.Handlers
         public void Handle_TreeHasSomeNodes_ShouldInsertIntoCorrectNode()
         {
             // Arrange
-            var handler = GetInsertHandler();
+            var handler = HandlerFabric.CreateInsertHandler();
 
-            var root = CreateNode(10);
-            root.LeftNode = CreateNode(5);
-            root.LeftNode.RightNode = CreateNode(7);
+            var root = NodeFabric.CreateNode(10);
+            root.LeftNode = NodeFabric.CreateNode(5);
+            root.LeftNode.RightNode = NodeFabric.CreateNode(7);
 
             // Act
             var actual = handler.Handle(root, 6, new object());
@@ -69,16 +70,6 @@ namespace AlgoAndStruct.BinaryTree.Tests.Handlers
             var inserted = actual.LeftNode.RightNode.LeftNode;
             Assert.IsNotNull(inserted);
             Assert.AreEqual(6, inserted.Key);
-        }
-
-        private InsertHandler<int, object> GetInsertHandler()
-        {
-            return new InsertHandler<int, object>();
-        }
-
-        private Node<int, object> CreateNode(int key)
-        {
-            return new Node<int, object>(key, new object());
         }
     }
 }
