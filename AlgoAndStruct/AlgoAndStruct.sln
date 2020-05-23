@@ -3,11 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgoAndStruct.RbTree", "AlgoAndStruct.RbTree\AlgoAndStruct.RbTree.csproj", "{65C924CD-7F76-46A4-8132-051164E34F2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlgoAndStruct.RbTree", "AlgoAndStruct.RbTree\AlgoAndStruct.RbTree.csproj", "{65C924CD-7F76-46A4-8132-051164E34F2D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RbTree", "RbTree", "{4B523C11-EFBC-458A-A76A-4B2E474BC1A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgoAndStruct.RbTree.Tests", "AlgoAndStruct.RbTree.Tests\AlgoAndStruct.RbTree.Tests.csproj", "{38439836-2C5B-4982-AE72-EFCDDBC8569A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlgoAndStruct.RbTree.Tests", "AlgoAndStruct.RbTree.Tests\AlgoAndStruct.RbTree.Tests.csproj", "{38439836-2C5B-4982-AE72-EFCDDBC8569A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BinaryTree", "BinaryTree", "{B87DBA25-862F-44E0-8914-A944C73657F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgoAndStruct.BinaryTree", "AlgoAndStruct.BinaryTree\AlgoAndStruct.BinaryTree.csproj", "{58516774-A4DF-4785-94E5-5D22DFDED3F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgoAndStruct.BinaryTree.Tests", "AlgoAndStruct.BinaryTree.Tests\AlgoAndStruct.BinaryTree.Tests.csproj", "{DE1FA169-A3F3-42A0-962B-E905562FAA77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +29,14 @@ Global
 		{38439836-2C5B-4982-AE72-EFCDDBC8569A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38439836-2C5B-4982-AE72-EFCDDBC8569A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38439836-2C5B-4982-AE72-EFCDDBC8569A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58516774-A4DF-4785-94E5-5D22DFDED3F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58516774-A4DF-4785-94E5-5D22DFDED3F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58516774-A4DF-4785-94E5-5D22DFDED3F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58516774-A4DF-4785-94E5-5D22DFDED3F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE1FA169-A3F3-42A0-962B-E905562FAA77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE1FA169-A3F3-42A0-962B-E905562FAA77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE1FA169-A3F3-42A0-962B-E905562FAA77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE1FA169-A3F3-42A0-962B-E905562FAA77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,6 +44,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{65C924CD-7F76-46A4-8132-051164E34F2D} = {4B523C11-EFBC-458A-A76A-4B2E474BC1A7}
 		{38439836-2C5B-4982-AE72-EFCDDBC8569A} = {4B523C11-EFBC-458A-A76A-4B2E474BC1A7}
+		{58516774-A4DF-4785-94E5-5D22DFDED3F6} = {B87DBA25-862F-44E0-8914-A944C73657F1}
+		{DE1FA169-A3F3-42A0-962B-E905562FAA77} = {B87DBA25-862F-44E0-8914-A944C73657F1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DB092A6A-275B-4C2D-9631-16D0C061429E}
