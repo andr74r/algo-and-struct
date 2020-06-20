@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AlgoAndStruct.RbTree\AlgoAndStruct.RbTree.csproj" />
+    <ProjectReference Include="..\AlgoAndStruct.Graph\AlgoAndStruct.Graph.csproj" />
   </ItemGroup>
 
 </Project>

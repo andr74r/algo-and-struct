@@ -11,7 +11,7 @@ namespace AlgoAndStruct.BinaryTree
 
         public TKey Key { get; private set; }
 
-        public TValue Value { get; private set; }
+        public TValue Value { get; set; }
 
         public BinaryTreeNode(TKey key, TValue value)
         {
