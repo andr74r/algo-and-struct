@@ -24,9 +24,50 @@ namespace AlgoAndStruct.Graph
             }
         }
 
-        public GraphNode<TKey, TValue>[][] GetMatrix()
+        public TWeight this[TKey key1, TKey key2]
         {
-            throw new System.NotImplementedException();
+            get
+            {
+                var node1 = _nodes.SingleOrDefault(x => x.Key.Equals(key1));
+                var node2 = _nodes.SingleOrDefault(x => x.Key.Equals(key2));
+
+                if (node1 == null || node2 == null)
+                {
+                    throw new System.ArgumentException("Nodes do not exist");
+                }
+
+                var edge = _edges.SingleOrDefault(x => x.From.Key.Equals(key1) && x.To.Key.Equals(key2));
+
+                return edge != null ? edge.Weight : default;
+            }
+            set
+            {
+                if (value.Equals(default(TWeight)))
+                {
+                    RemoveEdge(key1, key2);
+
+                    return;
+                }
+
+                var edge = _edges.SingleOrDefault(x => x.From.Key.Equals(key1) && x.To.Key.Equals(key2));
+
+                if (edge == null)
+                {
+                    var node1 = _nodes.SingleOrDefault(x => x.Key.Equals(key1));
+                    var node2 = _nodes.SingleOrDefault(x => x.Key.Equals(key2));
+
+                    if (node1 == null || node2 == null)
+                    {
+                        throw new System.ArgumentException("Nodes do not exist");
+                    }
+
+                    AddEdge(node1.Key, node2.Key, value);
+                }
+                else
+                {
+                    edge.Weight = value;
+                }
+            }
         }
 
         public void AddNode(TKey key, TValue value)

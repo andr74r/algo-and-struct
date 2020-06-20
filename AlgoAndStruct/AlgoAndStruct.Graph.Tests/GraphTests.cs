@@ -99,5 +99,121 @@ namespace AlgoAndStruct.Graph.Tests
             Assert.AreEqual("node1", graph.Nodes[0].Key);
             Assert.AreEqual(0, graph.Edges.Count);
         }
+
+        [Test]
+        public void Indexer_EdgeExists_ShouldReturnEdgeWeight()
+        {
+            // Arrange
+            var graph = new Graph<string, int, int>();
+            graph.AddNode("node1", 1);
+            graph.AddNode("node2", 2);
+
+            graph.AddEdge("node1", "node1", 3);
+
+            // Act
+            var actual = graph["node1", "node1"];
+
+            // Assert
+            Assert.AreEqual(3, actual);
+        }
+
+        [Test]
+        public void Indexer_EdgeDoNotExist_ShouldReturnDefaultValue()
+        {
+            // Arrange
+            var graph = new Graph<string, int, int>();
+            graph.AddNode("node1", 1);
+            graph.AddNode("node2", 2);
+
+            graph.AddEdge("node1", "node1", 3);
+
+            // Act
+            var actual = graph["node1", "node2"];
+
+            // Assert
+            Assert.AreEqual(0, actual);
+        }
+
+        [Test]
+        public void Indexer_NodesDoNotExist_ShouldThrowArgException()
+        {
+            // Arrange
+            var graph = new Graph<string, int, int>();
+            graph.AddNode("node1", 1);
+            graph.AddNode("node2", 2);
+
+            graph.AddEdge("node1", "node1", 3);
+
+            // Act
+            var del = new TestDelegate(() => {
+                var value = graph["node1", "node3"];
+            });
+
+            // Assert
+            Assert.Throws<System.ArgumentException>(del);
+        }
+
+        [Test]
+        public void Indexer_SetValue_ShouldAddEdge()
+        {
+            // Arrange
+            var graph = new Graph<string, int, int>();
+            graph.AddNode("node1", 1);
+            graph.AddNode("node2", 2);
+
+            // Act
+            graph["node1", "node2"] = 3;
+
+            // Assert
+            Assert.AreEqual(1, graph.Edges.Count);
+            Assert.AreEqual(3, graph.Edges[0].Weight);
+        }
+
+        [Test]
+        public void Indexer_SetValueAndEdgeExists_ShouldUpdateEdgeWeight()
+        {
+            // Arrange
+            var graph = new Graph<string, int, int>();
+            graph.AddNode("node1", 1);
+            graph.AddNode("node2", 2);
+            graph.AddEdge("node1", "node2", 1);
+
+            // Act
+            graph["node1", "node2"] = 3;
+
+            // Assert
+            Assert.AreEqual(1, graph.Edges.Count);
+            Assert.AreEqual(3, graph.Edges[0].Weight);
+        }
+
+        [Test]
+        public void Indexer_SetValueAndNodesDoNotExist_ShouldThrowArgException()
+        {
+            // Arrange
+            var graph = new Graph<string, int, int>();
+            graph.AddNode("node1", 1);
+
+            // Act
+            var del = new TestDelegate(() => graph["node1", "node2"] = 3);
+
+            // Assert
+            Assert.Throws<System.ArgumentException>(del);
+        }
+
+        [Test]
+        public void Indexer_SetDefaultValueAndEdgeExists_ShouldRemoveEdge()
+        {
+            // Arrange
+            var graph = new Graph<string, int, int>();
+            graph.AddNode("node1", 1);
+            graph.AddNode("node2", 2);
+            graph.AddEdge("node1", "node2", 1);
+
+            // Act
+            graph["node1", "node2"] = 0;
+
+            // Assert
+            Assert.AreEqual(0, graph.Edges.Count);
+        }
     }
 }
