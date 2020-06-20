@@ -24,19 +24,19 @@ namespace AlgoAndStruct.Graph
             }
         }
 
-        public TWeight this[TKey key1, TKey key2]
+        public TWeight this[TKey from, TKey to]
         {
             get
             {
-                var node1 = _nodes.SingleOrDefault(x => x.Key.Equals(key1));
-                var node2 = _nodes.SingleOrDefault(x => x.Key.Equals(key2));
+                var node1 = GetNode(from);
+                var node2 = GetNode(to);
 
                 if (node1 == null || node2 == null)
                 {
                     throw new System.ArgumentException("Nodes do not exist");
                 }
 
-                var edge = _edges.SingleOrDefault(x => x.From.Key.Equals(key1) && x.To.Key.Equals(key2));
+                var edge = GetEdge(from, to);
 
                 return edge != null ? edge.Weight : default;
             }
@@ -44,17 +44,17 @@ namespace AlgoAndStruct.Graph
             {
                 if (value.Equals(default(TWeight)))
                 {
-                    RemoveEdge(key1, key2);
+                    RemoveEdge(from, to);
 
                     return;
                 }
 
-                var edge = _edges.SingleOrDefault(x => x.From.Key.Equals(key1) && x.To.Key.Equals(key2));
+                var edge = GetEdge(from, to);
 
                 if (edge == null)
                 {
-                    var node1 = _nodes.SingleOrDefault(x => x.Key.Equals(key1));
-                    var node2 = _nodes.SingleOrDefault(x => x.Key.Equals(key2));
+                    var node1 = GetNode(from);
+                    var node2 = GetNode(to);
 
                     if (node1 == null || node2 == null)
                     {
@@ -72,7 +72,7 @@ namespace AlgoAndStruct.Graph
 
         public void AddNode(TKey key, TValue value)
         {
-            if (_nodes.Any(x => x.Key.Equals(key)))
+            if (GetNode(key) != null)
             {
                 throw new System.ArgumentException("Key already exists.");
             }
@@ -89,16 +89,16 @@ namespace AlgoAndStruct.Graph
 
         public void AddEdge(TKey from, TKey to, TWeight weight)
         {
-            var fromNode = _nodes.SingleOrDefault(x => x.Key.Equals(from));
+            var fromNode = GetNode(from);
 
-            var toNode = _nodes.SingleOrDefault(x => x.Key.Equals(to));
+            var toNode = GetNode(to);
 
             if (fromNode == null || toNode == null)
             {
                 throw new System.ArgumentException("Key was not found.");
             }
 
-            if (_edges.Any(x => x.To == toNode && x.From == fromNode))
+            if (GetEdge(from, to) != null)
             {
                 throw new System.ArgumentException("Edge already exists");
             }
@@ -109,6 +109,16 @@ namespace AlgoAndStruct.Graph
         public void RemoveEdge(TKey from, TKey to)
         {
             _edges.RemoveAll(x => x.From.Key.Equals(from) && x.To.Key.Equals(to));
+        }
+
+        private GraphNode<TKey, TValue> GetNode(TKey key)
+        {
+            return _nodes.SingleOrDefault(x => x.Key.Equals(key));
+        }
+
+        private GraphEdge<TKey, TValue, TWeight> GetEdge(TKey from, TKey to)
+        {
+            return _edges.SingleOrDefault(x => x.From.Key.Equals(from) && x.To.Key.Equals(to));
         }
     }
 }
